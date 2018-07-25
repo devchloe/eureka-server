@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: eureka-server
+
+server:
+  port: ${eureka.port:8761}
+
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+
+---
+spring:
+  profiles: eureka01
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka02:8762/eureka/
+  instance:
+    hostname: eureka01
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+
+---
+spring:
+  profiles: eureka02
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka01:8761/eureka/
+  instance:
+    hostname: eureka02
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+
+#logging.level.com.netflix.eureka: OFF
+#logging.level.com.netflix.discovery: OFF
