@@ -33,6 +33,3 @@ eureka:
   instance:
     hostname: eureka02
     instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
-
-#logging.level.com.netflix.eureka: OFF
-#logging.level.com.netflix.discovery: OFF
